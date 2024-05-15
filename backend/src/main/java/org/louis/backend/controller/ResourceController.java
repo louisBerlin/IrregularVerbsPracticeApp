@@ -26,7 +26,7 @@ public class ResourceController {
      */
 
 
-    @RequestMapping(value = {"/*", "/**/{path:[^\\.]*}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/**"}, method = RequestMethod.GET)
     public ModelAndView redirectToMainPage() {
         return new ModelAndView("forward:/index.html");
     }
