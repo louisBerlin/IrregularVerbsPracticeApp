@@ -27,7 +27,7 @@ jobs:
           path: frontend/dist/
 
   build-backend:
-    runs-on: ubuntu-latest_12
+    runs-on: ubuntu-latest
     needs: build-frontend
     steps:
       - uses: actions/checkout@v4

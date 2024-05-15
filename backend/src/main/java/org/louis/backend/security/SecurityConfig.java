@@ -1,23 +1,43 @@
 package org.louis.backend.security;
 
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig {
+
+    @Value("${app.url}")
+    private String appUrl;
+
     @Bean
-    public InMemoryUserDetailsManager userDetailsManager () {
-        UserDetails john = User.builder()
-                .username("rob")
-                .password("1234")
-                .roles("Employee")
-                .build();
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+                .csrf(AbstractHttpConfigurer::disable)
+                .authorizeHttpRequests(a -> a
+                        .requestMatchers("/swagger-ui/**").authenticated()
+                        .requestMatchers("/api/secured").authenticated()
+                        .requestMatchers("/api/**").permitAll()
 
-        return new InMemoryUserDetailsManager(john);
+                        .anyRequest().permitAll()
+                )
+                .logout(logout -> logout
+                        .logoutUrl("/api/auth/logout")
+                        .logoutSuccessHandler(((request, response, authentication) -> response.setStatus(200))))
+                .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.ALWAYS))
+                .exceptionHandling(e -> e
+                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+                .oauth2Login(o -> o.defaultSuccessUrl("/login/oauth2/code/github"));
+        return http.build();
     }
-}
 
+
+}
