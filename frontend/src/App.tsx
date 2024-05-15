@@ -14,6 +14,7 @@ import Login from "./pages/Login.tsx";
 import Exercice from "./pages/Exercice.tsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Test from "./pages/Test.tsx";
 
 
 
@@ -70,6 +71,8 @@ function App() {
           <Routes>
               <Route path="/" element={<Home/>}/>
               <Route path="/login" element={<Login/>}/>
+              <Route path="/test" element={<Test/>}/>
+
 
               <Route element={<ProtectedRoutes user={user} />}>
                   <Route path="/exercice" element={<Exercice/>}/>

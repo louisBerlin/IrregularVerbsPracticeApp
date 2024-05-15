@@ -6,8 +6,8 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'localhost:8080'
-        // target: 'http://localhost:8080'
+       // target: 'localhost:8080'
+         target: 'http://localhost:8080'
        // target: 'https://irregularverbspracticeapp.onrender.com'
       }
     }

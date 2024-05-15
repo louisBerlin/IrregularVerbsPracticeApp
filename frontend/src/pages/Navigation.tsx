@@ -1,11 +1,12 @@
+import {Link} from "react-router-dom";
 
 
 export default function NavigationLogged() {
 
     function login(){
-       // const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin;
-     //   const host = window.location.host === 'localhost:5173' ? 'https://irregularverbspracticeapp.onrender.com': window.location.origin;
-        const host = window.location.host === 'localhost:5173' ? 'localhost:8080': window.location.origin;
+        const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin;
+       // const host = window.location.host === 'localhost:5173' ? 'https://irregularverbspracticeapp.onrender.com': window.location.origin;
+       // const host = window.location.host === 'localhost:5173' ? 'localhost:8080': window.location.origin;
 
         window.open(host + '/oauth2/authorization/github', '_self')
     }
@@ -18,7 +19,7 @@ export default function NavigationLogged() {
 
             <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <a className="navbar-item" href="http://localhost:5173">
+                    <a className="navbar-item" href="/">
 
                         IrregularVerbsPracticeApp
 
@@ -30,6 +31,11 @@ export default function NavigationLogged() {
 
                 <div id="navbarBasicExample" className="navbar-menu">
                     <div className="navbar-start">
+
+
+                        <Link id="RouterNavLink" className="navbar-item is-active " to="/test">test</Link>
+
+
 
 
                     </div>

@@ -6,7 +6,7 @@ export default function NavigationLogged() {
 
     function logout(){
         axios.get("/api/auth/logout")
-            .then(() => window.location.href = "http://localhost:5173")
+            .then(() => window.location.href = "/")
     }
 
 
@@ -17,7 +17,7 @@ export default function NavigationLogged() {
 
             <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
                 <div className="navbar-brand">
-                    <a className="navbar-item " href="http://localhost:5173">
+                    <a className="navbar-item " href="/">
 
 
                         <h3 className="navbar-item title is-3">IrregularVerbsPracticeApp</h3>
