@@ -12,6 +12,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class VerbService {
+    /*
     private final VerbRepository verbRepository;
 
 
@@ -75,4 +76,6 @@ public class VerbService {
 
 
 
+
+     */
 }

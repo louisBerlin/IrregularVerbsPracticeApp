@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class DataService {
+    /*
 
 
     private final org.louis.backend.repository.VerbRepository verbRepository;
@@ -87,4 +88,6 @@ public class DataService {
             return verbsForExercice;
     }
 
+
+     */
     }

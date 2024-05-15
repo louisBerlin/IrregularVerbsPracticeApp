@@ -14,9 +14,10 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+    /*
 
-    @Value("${app.url}")
-    private String appUrl;
+//    @Value("${app.url}")
+//    private String appUrl;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -40,4 +41,6 @@ public class SecurityConfig {
     }
 
 
+
+     */
 }

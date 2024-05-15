@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ResourceController {
+    /*
 
   //  @RolesAllowed("ROLE_ADMIN")
     @GetMapping("/admin")
@@ -18,4 +19,6 @@ public class ResourceController {
         return "Hello User!";
     }
 
+
+     */
 }

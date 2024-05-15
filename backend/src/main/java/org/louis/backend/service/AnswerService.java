@@ -13,6 +13,7 @@ import java.util.UUID;
 @Service
 @AllArgsConstructor
 public class AnswerService {
+    /*
 
     private final AnswerRepository answerRepository;
 
@@ -56,4 +57,6 @@ public class AnswerService {
     }
 
 
+
+     */
 }
