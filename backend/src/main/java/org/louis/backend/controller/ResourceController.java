@@ -26,9 +26,11 @@ public class ResourceController {
      */
 
 
-    @RequestMapping(value = {"/**"}, method = RequestMethod.GET)
+  /*  @RequestMapping(value = {"/**"}, method = RequestMethod.GET)
     public ModelAndView redirectToMainPage() {
-        return new ModelAndView("forward:/index.html");
+        return new ModelAndView("/index.html");
     }
+
+   */
 
 }
