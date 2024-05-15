@@ -55,7 +55,7 @@ export default function Exercice () {
     }
 
     const getData = async ( ) => {
-        const dataFromAxios =  await axios.get('/api/get10verbsforexercice')
+        await axios.get('/api/get10verbsforexercice')
             .then(response => {
                 setDataVerbList(response.data);
                 console.log(response.data)
@@ -64,7 +64,6 @@ export default function Exercice () {
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-
     }
 
 

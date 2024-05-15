@@ -17,65 +17,21 @@ import axios from "axios";
 
 
 
-type UserAttributes = {
-    login: string,
-    id: number,
-    node_id: string,
-    avatar_url: string,
-    gravatar_id: string,
-    url: string,
-    html_url: string,
-    followers_url: string,
-    following_url: string,
-    gists_url: string,
-    starred_url: string,
-    subscriptions_url: string,
-    organizations_url: string,
-    repos_url: string,
-    events_url: string,
-    received_events_url: string,
-    type: string,
-    site_admin: boolean,
-    name: string,
-    company: string,
-    blog: string,
-    location: string,
-    email: string,
-    hireable: string,
-    bio: string,
-    twitter_username: string,
-    public_repos: number,
-    public_gists: number,
-    followers: number,
-    following: number,
-    created_at: string,
-    updated_at: string
-
-}
-
 
 
 
 
 function App() {
 
-    const[userAt, setUserAt] = useState<UserAttributes>({} as UserAttributes)
 
     const[user, setUser] = useState<string>("anonymousUser")
-    function login(){
-        const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin;
-
-        window.open(host + '/oauth2/authorization/github', '_self')
-    }
+ 
 
     useEffect(() =>
             getMe()
         , [user])
 
-    function logout(){
-        axios.get("/api/auth/logout")
-            .then(() => getMe())
-    }
+
     function getMe(){
         axios.get("/api/auth/me2")
             .then(response => {
