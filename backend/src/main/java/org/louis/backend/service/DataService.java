@@ -2,6 +2,7 @@ package org.louis.backend.service;
 
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.louis.backend.dto.VerbForExercice;
 import org.louis.backend.dto.VerbWithUserLevelRating;
 import org.louis.backend.model.Answer;
@@ -12,9 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class DataService {
-    /*
+
 
 
     private final org.louis.backend.repository.VerbRepository verbRepository;
@@ -89,5 +90,5 @@ public class DataService {
     }
 
 
-     */
+
     }

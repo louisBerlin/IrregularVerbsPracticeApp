@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-    /*
+
 
 //    @Value("${app.url}")
 //    private String appUrl;
@@ -42,5 +42,5 @@ public class SecurityConfig {
 
 
 
-     */
+
 }

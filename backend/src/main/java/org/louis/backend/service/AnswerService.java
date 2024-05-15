@@ -2,6 +2,7 @@ package org.louis.backend.service;
 
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.louis.backend.dto.AnswerUpdate;
 import org.louis.backend.model.Answer;
 import org.louis.backend.repository.AnswerRepository;
@@ -11,9 +12,8 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class AnswerService {
-    /*
 
     private final AnswerRepository answerRepository;
 
@@ -58,5 +58,5 @@ public class AnswerService {
 
 
 
-     */
+
 }

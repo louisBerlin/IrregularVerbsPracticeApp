@@ -17,7 +17,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class ExerciceController {
-    /*
+
 
 
 
@@ -71,5 +71,5 @@ public class ExerciceController {
 
 
 
-     */
+
 }
