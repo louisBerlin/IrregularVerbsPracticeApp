@@ -1,6 +1,7 @@
 package org.louis.backend.controller;
 
 
+import org.louis.backend.dto.BasicUser;
 import org.louis.backend.dto.GitHubUser;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -29,8 +30,19 @@ public class AuthController {
 
     @GetMapping("/me2")
     public String getMe(){
+        System.out.println(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
         return SecurityContextHolder.getContext().getAuthentication().getName();
     }
+
+
+
+   /* @GetMapping("/me4")
+    public BasicUser getMe4(){
+
+        return new BasicUser(SecurityContextHolder.getContext().getAuthentication().,SecurityContextHolder.getContext().getAuthentication().getName())
+    }
+
+    */
 
 
 

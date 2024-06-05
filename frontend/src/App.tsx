@@ -8,13 +8,15 @@ import ListVerb from "./pages/ListVerb.tsx";
 import NavigationLogged from "./pages/NavigationLogged.tsx";
 import Navigation from "./pages/Navigation.tsx";
 import Footer from "./pages/Footer.tsx";
-import {Navigate, Outlet, Route, Routes} from "react-router-dom";
+import { Route, Routes} from "react-router-dom";
 import Home from "./pages/Home.tsx";
-import Login from "./pages/Login.tsx";
+import LoginPage from "./pages/LoginPage.tsx";
 import Exercice from "./pages/Exercice.tsx";
+import ProtectedRoutes from "./pages/ProtectedRoutes.tsx";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import Test from "./pages/Test.tsx";
+import RegisterPage from "./pages/RegisterPage.tsx";
 
 
 
@@ -30,7 +32,7 @@ function App() {
 
     useEffect(() =>
             getMe()
-        , [user])
+        , [])
 
 
     function getMe(){
@@ -38,22 +40,14 @@ function App() {
             .then(response => {
                 setUser(response.data)
               //  alert(response.data)
-
               //  alert(userAt)
             })
     }
 
 
-      function ProtectedRoutes(props: { user: string }) {
 
-        if (props.user === undefined) {
-            return <div>Loading...</div>
-        }
 
-        return (
-            user !== "anonymousUser" ? <Outlet /> : <Navigate to = "/" />
-        )
-    }
+
 
 
   return (
@@ -62,7 +56,9 @@ function App() {
       {user === "anonymousUser" ?
           <Navigation/> : <><NavigationLogged/>
 
-              <div className="box container">Welcome to {user}.</div>
+              <br/>
+
+              <div className="box container notification is-warning is-light">Welcome to {user}.</div>
 
           </>
       }
@@ -70,14 +66,15 @@ function App() {
 
           <Routes>
               <Route path="/" element={<Home/>}/>
-              <Route path="/login" element={<Login/>}/>
+              <Route path="/login" element={<LoginPage  setUser={setUser}/>}/>
               <Route path="/test" element={<Test/>}/>
+              <Route path="/r" element={<RegisterPage/>}/>
+
 
 
               <Route element={<ProtectedRoutes user={user} />}>
                   <Route path="/exercice" element={<Exercice/>}/>
                   <Route path="/list" element={<ListVerb/>}/>
-
               </Route>
 
           </Routes>
@@ -85,7 +82,6 @@ function App() {
 
 
           <Footer/>
-
 
       </>
   )

@@ -5,22 +5,36 @@ import axios from "axios";
 export default function NavigationLogged() {
 
     function logout(){
-        axios.get("/api/auth/logout")
-            .then(() => window.location.href = "/")
+        axios.get("/api/user/logout")
+            .then(() => {
+              //
+                //  setUser("anonymousUser")
+                window.location.href = "/"})
     }
 
+   /* function logout() {
+        axios.post("/api/user/logout")
+            .then(() => setUser("anonymousUser"))
+    }
+
+    */
 
     return (
 
         <header className="bd-header">
 
 
-            <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
+            <nav className="navbar" role="navigation" aria-label="main navigation">
+
+
+<div className="container">
                 <div className="navbar-brand">
                     <a className="navbar-item " href="/">
 
 
-                        <h3 className="navbar-item title is-3">IrregularVerbsPracticeApp</h3>
+                        <img src="/logo3.png" alt="logo" />
+
+                        <p className="title is-4 is-spaced">VerbHero</p>
 
 
                     </a>
@@ -33,15 +47,14 @@ export default function NavigationLogged() {
                 </div>
 
 
-                <div id="navbarBasicExample" className="navbar-menu">
+                <div id="navbarBasicExample" className="navbar-menu ">
                     <div className="navbar-start">
-                        <Link id="RouterNavLink" className="navbar-item is-active " to="/">Home</Link>
 
 
-                        <Link id="RouterNavLink" className="navbar-item " to="/list">List</Link>
+                        <Link id="RouterNavLink" className="navbar-item " to="/list">Verb list</Link>
 
 
-                        <Link id="RouterNavLink" className="navbar-item " to="/exercice">exercice</Link>
+                        <Link id="RouterNavLink" className="navbar-item " to="/exercice">Start exercice</Link>
 
 
                     </div>
@@ -51,13 +64,21 @@ export default function NavigationLogged() {
                             <div className="buttons">
 
 
-                                <button id="RouterNavLink" className="button is-light" onClick={logout}>Log out</button>
+                                <button id="RouterNavLink" className="button is-light" onClick={logout}>Log out
+                                </button>
 
 
                             </div>
                         </div>
                     </div>
                 </div>
+
+
+
+</div>
+
+
+
             </nav>
 
         </header>

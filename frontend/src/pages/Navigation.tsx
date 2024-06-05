@@ -1,15 +1,14 @@
-import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
+
 
 
 export default function NavigationLogged() {
 
-    function login(){
-        const host = window.location.host === 'localhost:5173' ? 'http://localhost:8080': window.location.origin;
-       // const host = window.location.host === 'localhost:5173' ? 'https://irregularverbspracticeapp.onrender.com': window.location.origin;
-       // const host = window.location.host === 'localhost:5173' ? 'localhost:8080': window.location.origin;
 
-        window.open(host + '/oauth2/authorization/github', '_self')
-    }
+
+
+
+    const navigate = useNavigate();
 
 
     return (
@@ -17,48 +16,44 @@ export default function NavigationLogged() {
         <header className="bd-header">
 
 
-            <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
-                <div className="navbar-brand">
-                    <a className="navbar-item" href="/">
+            <nav className="navbar" role="navigation" aria-label="main navigation">
+                <div className="container">
 
-                        IrregularVerbsPracticeApp
+                    <div className="navbar-brand">
+                        <a className="navbar-item" href="/">
 
-
-                    </a>
-
-                </div>
+                            <img src="/logo3.png" alt="logo"/>
+                            <p className="title is-4 is-spaced">VerbHero</p>
 
 
-                <div id="navbarBasicExample" className="navbar-menu">
-                    <div className="navbar-start">
-
-
-                        <Link id="RouterNavLink" className="navbar-item is-active " to="/test">test</Link>
-
-
-
+                        </a>
 
                     </div>
 
-                    <div className="navbar-end">
-                        <div className="navbar-item">
-                            <div className="buttons">
+
+                    <div id="navbarBasicExample" className="navbar-menu">
+                        <div className="navbar-start">
 
 
-                                <button id="RouterNavLink" className="button is-light" onClick={login}>Log in</button>
+                        </div>
 
+                        <div className="navbar-end">
+                            <div className="navbar-item">
+                                <div className="buttons">
+
+
+                                    <button id="RouterNavLink" className="button is-light"
+                                            onClick={() => navigate("/login")}>Log in
+                                    </button>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </nav>
 
-
-            <div className="container box">
-                <h1 className="title">Welcome to the Irregular Verbs Practice App</h1>
-                <h2 className="subtitle">Please log in to start practicing</h2>
-                <button className="button is-primary" onClick={login}>Log in</button>
-            </div>
 
         </header>
     )

@@ -6,6 +6,8 @@ import org.louis.backend.dto.AnswerUpdate;
 import org.louis.backend.model.Answer;
 import org.louis.backend.model.Verb;
 import org.louis.backend.service.AnswerService;
+import org.louis.backend.service.ProgressionService;
+import org.louis.backend.service.SentenceService;
 import org.louis.backend.service.VerbService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,16 +22,19 @@ public class ExerciceController {
 
 
 
-
+    final ProgressionService progressionService;
     private final VerbService verbService;
     private final AnswerService answerService;
+    private final SentenceService sentenceService;
     private final org.louis.backend.service.DataService dataService;
 
     @GetMapping("api/addverbs")
     public String addVerbs () {
         verbService.addVerbs();
+        sentenceService.addSentenses();
         return "ok ;-)";
     }
+
 
 
 
@@ -39,33 +44,36 @@ public class ExerciceController {
     }
 
 
-    @GetMapping("api/getverbswithuserrating")
-    public List<org.louis.backend.dto.VerbWithUserLevelRating> getVerbsWithUserLevelRating (String userId) {
-        return dataService.getVerbsWithUserLevelRating(userId);}
 
 
+    @PostMapping("api/getverbswithuserrating")
+    public List<org.louis.backend.dto.VerbWithUserLevelRating> getVerbsWithUserLevelRating (@RequestBody String username) {
+        return dataService.getVerbsWithUserLevelRating(username.replace("=", ""));}
+
+
+
+    /*
     @GetMapping("api/get10verbswithuserrating")
-    public List<org.louis.backend.dto.VerbWithUserLevelRating> get10VerbsWithUserLevelRating (String userId) {
+    public List<org.louis.backend.dto.VerbWithUserLevelRating> get10VerbsWithUserLevelRating (@RequestBody String userId) {
         return dataService.get10VerbsWithUserLevelRating(userId);
     }
 
+     */
 
-    @GetMapping("api/get10verbsforexercice")
-    public List<org.louis.backend.dto.VerbForExercice> get10verbsforexercice (String userId) {
-        return dataService.get10VerbsForExercice(userId);
+
+    @PostMapping("api/get5verbsforexercice")
+    public List<org.louis.backend.dto.VerbForExercice> get5verbsforexercice (@RequestBody String username) {
+        return dataService.get5VerbsForExercice(username.replace("=", ""));
     }
 
 
 
 
-    @PostMapping ("api/setanswer")
-    public void setAnswer (@RequestBody List<Answer> answers) {
-        answerService.addAllAnswer(answers);
-    }
 
 
     @PostMapping ("api/setanswers")
     public void setAnswers (@RequestBody List<AnswerUpdate> answers) {
+        progressionService.addProgression(answers.get(0).getUserId(), answerService.calculateTotalPoints(answers));
         answerService.addAnswerUpdates(answers);
     }
 

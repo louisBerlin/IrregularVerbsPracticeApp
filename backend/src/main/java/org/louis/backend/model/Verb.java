@@ -16,7 +16,7 @@ public class Verb {
     private   String infinitive;
     private   String table2;
     private   String table3;
-    private   String infinitiveFR;
+    private   String urlAudio;
     private   String infinitiveDE;
     private   String infinitiveRU;
 

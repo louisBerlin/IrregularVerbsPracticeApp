@@ -12,3 +12,10 @@
 /frontend/dist
 /frontend/dist-ssr
 /frontend/*.local
+/backend/src/main/resources/static/assets/
+/backend/src/main/resources/static/verbsAudio/
+/backend/src/main/resources/static/index.html
+/backend/src/main/resources/static/logo1.png
+/backend/src/main/resources/static/logo2.png
+/backend/src/main/resources/static/logo3.png
+/backend/src/main/resources/static/vite.svg
